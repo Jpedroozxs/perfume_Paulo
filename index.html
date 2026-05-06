@@ -2,20 +2,549 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Essence & Aroma - Perfumes Luxo</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1a 100%);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* ========== HEADER ========== */
+        .hero {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            background: linear-gradient(180deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.98) 100%);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, #d4af37, transparent);
+        }
+        .floral-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #e8d5a3, #d4af37, #b8942e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            color: #b8b8c8;
+            font-weight: 400;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== MAIN ========== */
+        .menu-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .menu-container {
+            width: 100%;
+            background: rgba(15, 15, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 1rem 0;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        /* navegação abas/filtros */
+        .menu-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+            margin: 0 0 2rem 0;
+        }
+        
+        .tab-btn {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            cursor: pointer;
+            color: #c8c8dc;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tab-btn i {
+            font-size: 1rem;
+            color: #d4af37;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #d4af37, #b8942e);
+            border-color: #d4af37;
+            color: #1a1a2e;
+            box-shadow: 0 8px 18px rgba(212, 175, 55, 0.3);
+        }
+        
+        .tab-btn.active i {
+            color: #1a1a2e;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+            color: #d4af37;
+        }
+
+        /* grade de perfumes */
+        .perfume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+            padding: 0 1rem;
+        }
+        
+        .perfume-card {
+            background: rgba(26, 26, 46, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .perfume-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -14px rgba(212, 175, 55, 0.2);
+            background: rgba(30, 30, 55, 0.95);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .card-img {
+            background: linear-gradient(125deg, #1e1e35, #12121f);
+            padding: 1.8rem 0 1.2rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .card-img i {
+            font-size: 4rem;
+            color: #d4af37;
+            filter: drop-shadow(2px 6px 12px rgba(0,0,0,0.3));
+        }
+        
+        .badge-note {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: linear-gradient(135deg, #d4af37, #b8942e);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            backdrop-filter: blur(2px);
+        }
+
+        .card-content {
+            padding: 1.5rem 1.4rem 1.8rem;
+        }
+        
+        .perfume-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #e8d5a3;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.2px;
+        }
+        
+        .brand {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+        
+        .notes {
+            font-size: 0.85rem;
+            color: #b8b8cc;
+            margin: 0.8rem 0;
+            line-height: 1.4;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .note-item {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .price {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #d4af37;
+            margin: 0.9rem 0 0.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        
+        .price small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #8a8aaa;
+        }
+        
+        .order-btn {
+            background: linear-gradient(135deg, #d4af37, #b8942e);
+            border: none;
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .order-btn:hover {
+            background: linear-gradient(135deg, #e8d5a3, #d4af37);
+            transform: scale(0.98);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: 2rem;
+            color: #d4af37;
+            grid-column: 1 / -1;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* footer */
+        .footer-menu {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.8rem;
+            color: #8a8aaa;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-menu span i {
+            margin-right: 6px;
+            color: #d4af37;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .menu-section {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 0.5rem 1.1rem;
+                font-size: 0.8rem;
+            }
+            .perfume-title {
+                font-size: 1.3rem;
+            }
+            .perfume-grid {
+                padding: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
 
-        </header>
-        <main>
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="hero">
+            <div class="floral-icon">
+                <i class="fas fa-crown"></i> <i class="fas fa-gem"></i>
+            </div>
+            <h1>Essence & Aroma</h1>
+            <p>menu olfativo · perfumaria de luxo · assinaturas exclusivas</p>
+        </div>
+    </header>
 
-        </main>
-        <footer>
-            <p>Paulo Santana</p>
-        </footer>
-    </div>
+    <!-- ========== MAIN ========== -->
+    <main>
+        <section class="menu-section">
+            <div class="menu-container">
+                <!-- filtros por família olfativa -->
+                <div class="menu-tabs">
+                    <button class="tab-btn active" data-filter="all">
+                        <i class="fas fa-flask"></i> Todos
+                    </button>
+                    <button class="tab-btn" data-filter="floral">
+                        <i class="fas fa-seedling"></i> Floral
+                    </button>
+                    <button class="tab-btn" data-filter="amadeirado">
+                        <i class="fas fa-tree"></i> Amadeirado
+                    </button>
+                    <button class="tab-btn" data-filter="citrico">
+                        <i class="fas fa-lemon"></i> Cítrico
+                    </button>
+                    <button class="tab-btn" data-filter="oriental">
+                        <i class="fas fa-moon"></i> Oriental
+                    </button>
+                </div>
+
+                <!-- grade de perfumes -->
+                <div class="perfume-grid" id="perfumeGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-menu">
+            <span><i class="fas fa-hand-sparkles"></i> Amostras grátis a cada compra</span>
+            <span><i class="fas fa-tint"></i> Concentração Extrait / EDP</span>
+            <span><i class="fas fa-recycle"></i> Frasco recarregável</span>
+            <span><i class="fas fa-truck"></i> Entrega expressa</span>
+        </div>
+    </footer>
+
+    <script>
+        // Base de dados dos perfumes
+        const perfumes = [
+            {
+                id: 1,
+                name: "Jardim Secreto",
+                brand: "L'Âme Fleurie",
+                category: "floral",
+                notes: ["Jasmim", "Rosa Damascena", "Violeta", "Almíscar Branco"],
+                price: 385,
+                iconClass: "fas fa-rose"
+            },
+            {
+                id: 2,
+                name: "Céu de Âmbar",
+                brand: "Noir Obscur",
+                category: "oriental",
+                notes: ["Âmbar Gris", "Baunilha Bourbon", "Sândalo", "Benjoim"],
+                price: 449,
+                iconClass: "fas fa-crown"
+            },
+            {
+                id: 3,
+                name: "Floresta Viva",
+                brand: "Terra Matters",
+                category: "amadeirado",
+                notes: ["Cedro da Virgínia", "Vetiver", "Musgo", "Pimenta Rosa"],
+                price: 319,
+                iconClass: "fas fa-leaf"
+            },
+            {
+                id: 4,
+                name: "Lima Fresca",
+                brand: "Mediterranéo",
+                category: "citrico",
+                notes: ["Bergamota", "Lima Siciliana", "Manjericão", "Neroli"],
+                price: 275,
+                iconClass: "fas fa-sun"
+            },
+            {
+                id: 5,
+                name: "Rosa de Outono",
+                brand: "Parfums d'Art",
+                category: "floral",
+                notes: ["Rosa Turca", "Gerânio", "Cravo", "Patchouli Leve"],
+                price: 399,
+                iconClass: "fas fa-feather-alt"
+            },
+            {
+                id: 6,
+                name: "Sândalo Nobre",
+                brand: "Mystic Roots",
+                category: "amadeirado",
+                notes: ["Sândalo Australiano", "Couro", "Cardamomo", "Ládano"],
+                price: 479,
+                iconClass: "fas fa-mountain"
+            },
+            {
+                id: 7,
+                name: "Mandarina Spritz",
+                brand: "Zest Riviera",
+                category: "citrico",
+                notes: ["Tangerina", "Toranja", "Flor de Laranjeira", "Gengibre"],
+                price: 259,
+                iconClass: "fas fa-citrus"
+            },
+            {
+                id: 8,
+                name: "Noite de Marrakech",
+                brand: "Oud & Epices",
+                category: "oriental",
+                notes: ["Açafrão", "Oud", "Mel", "Tabaco Louco"],
+                price: 529,
+                iconClass: "fas fa-moon"
+            },
+            {
+                id: 9,
+                name: "Íris Pétala",
+                brand: "Blanc Violette",
+                category: "floral",
+                notes: ["Íris", "Fava Tonka", "Almíscar", "Leito de Flores"],
+                price: 365,
+                iconClass: "fas fa-dove"
+            },
+            {
+                id: 10,
+                name: "Cedro Esculpido",
+                brand: "Atelier Bois",
+                category: "amadeirado",
+                notes: ["Cedro Atlas", "Cipreste", "Incenso", "Ambretolide"],
+                price: 410,
+                iconClass: "fas fa-tree"
+            }
+        ];
+
+        const perfumeGrid = document.getElementById('perfumeGrid');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        let activeFilter = 'all';
+
+        function renderPerfumes() {
+            const filteredItems = activeFilter === 'all' 
+                ? perfumes 
+                : perfumes.filter(p => p.category === activeFilter);
+            
+            if (filteredItems.length === 0) {
+                perfumeGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-gem" style="font-size: 2.5rem; opacity: 0.6;"></i>
+                        <h3 style="margin-top: 0.8rem;">Nenhum perfume encontrado</h3>
+                        <p style="margin-top: 0.5rem;">Tente outra família olfativa ✨</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let cardsHTML = '';
+            for (let p of filteredItems) {
+                const formattedPrice = p.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                const notesHtml = p.notes.map(note => `<span class="note-item">${note}</span>`).join('');
+                
+                let categoryLabel = '';
+                if (p.category === 'floral') categoryLabel = '🌷 Floral';
+                else if (p.category === 'amadeirado') categoryLabel = '🌲 Amadeirado';
+                else if (p.category === 'citrico') categoryLabel = '🍊 Cítrico';
+                else if (p.category === 'oriental') categoryLabel = '🕌 Oriental';
+                
+                cardsHTML += `
+                    <div class="perfume-card" data-id="${p.id}">
+                        <div class="card-img">
+                            <i class="${p.iconClass}"></i>
+                            <div class="badge-note">${categoryLabel}</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="perfume-title">${escapeHtml(p.name)}</div>
+                            <div class="brand">${escapeHtml(p.brand)}</div>
+                            <div class="notes">${notesHtml}</div>
+                            <div class="price">${formattedPrice} <small>90ml Eau de Parfum</small></div>
+                            <button class="order-btn" data-name="${escapeHtml(p.name)}" data-price="${formattedPrice}">
+                                <i class="fas fa-shopping-bag"></i> Escolher fragrância
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            perfumeGrid.innerHTML = cardsHTML;
+            
+            // Adicionar eventos aos botões
+            document.querySelectorAll('.order-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const perfumeName = btn.getAttribute('data-name') || 'este perfume';
+                    const perfumePrice = btn.getAttribute('data-price') || '';
+                    alert(`✨ "${perfumeName}" adicionado ao carrinho de desejos!\nTotal: ${perfumePrice}\n✨ Frete grátis acima de R$350`);
+                });
+            });
+        }
+        
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+        
+        // Configurar eventos de filtro
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter');
+                if (!filterValue) return;
+                activeFilter = filterValue;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderPerfumes();
+            });
+        });
+        
+        // Inicializar
+        renderPerfumes();
+    </script>
 </body>
 </html>
