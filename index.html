@@ -1,21 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfume</title>
+  <meta charset="UTF-8">
+  <title>Menu Perfumes</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f5f2;
+    }
+
+    .menu {
+      background-color: #3e2c2c;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu-item {
+      position: relative;
+      margin: 0 20px;
+    }
+
+    .menu-item a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 10px;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .menu-item a:hover {
+      color: #d4af37;
+    }
+
+    /* Submenu */
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background-color: #5a3e3e;
+      min-width: 180px;
+    }
+
+    .submenu a {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .menu-item:hover .submenu {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
 
-        </header>
-        <main>
+<div class="menu">
+  <div class="menu-item">
+    <a href="#">Início</a>
+  </div>
 
-        </main>
-        <footer>
-            <p>Paulo Santana</p>
-        </footer>
+  <div class="menu-item">
+    <a href="#">Perfumes</a>
+    <div class="submenu">
+      <a href="#">Masculinos</a>
+      <a href="#">Femininos</a>
+      <a href="#">Unissex</a>
     </div>
+  </div>
+
+  <div class="menu-item">
+    <a href="#">Marcas</a>
+    <div class="submenu">
+      <a href="#">Importados</a>
+      <a href="#">Nacionais</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <a href="#">Promoções</a>
+  </div>
+
+  <div class="menu-item">
+    <a href="#">Contato</a>
+  </div>
+</div>
+
 </body>
 </html>
